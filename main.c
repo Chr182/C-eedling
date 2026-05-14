@@ -4,32 +4,51 @@
 void menu();
 int timer();
 int printAsciiNumbers();
+void InputTime();
 
 int main(){
+  int MenuOption;
   menu();
-  timer();
+  printf("Input menu: ");
+  scanf("%d", &MenuOption);
+  switch(MenuOption){
+    case 1:
+      int SessionMinutes, BreakMinutes, Sessions;
+      InputTime(&Sessions, &SessionMinutes, &BreakMinutes);
+      printf("%d \n %d \n %d", Sessions, SessionMinutes, BreakMinutes);
+  }
   return 0;
+}
+
+void InputTime(int *Sessions, int *SessionMinutes, int *BreakMinutes){
+  printf("Input Amount of Sessions: ");
+  scanf("%d", Sessions);
+  
+  printf("Input Minutes per Session: ");
+  scanf("%d", SessionMinutes);
+  if(*SessionMinutes > 50){
+    printf(" Each session has to be below 50 minutes");
+  }
+
+  printf("Input Minutes per Break: ");
+  scanf("%d", BreakMinutes);
+  if(*BreakMinutes > 60){
+    printf(" Break minutes cannot be over 60 minutes");
+  }
 }
 
 int timer(){
   int minutes = 0;
 
-  printf("How many minutes do you wanna study eh?: ");
-  scanf("%d", &minutes);
-
   int total_seconds = minutes * 60;
 
     while (total_seconds >= 0) {
-        // Calculate H:M:S for display
         int h = total_seconds / 3600;
         int m = (total_seconds % 3600) / 60;
         int s = total_seconds % 60;
 
-        // Clear the screen (ANSI escape code) to keep the ASCII art in place
         printf("\033[H\033[J"); 
 
-        // Prepare the digits for the ASCII printer (MM:SS style)
-        // For simplicity, let's display the minutes and seconds
         int display_digits[4] = { m / 10, m % 10, s / 10, s % 10 };
         
         printf("TIME REMAINING (MM:SS):\n\n");
@@ -37,16 +56,12 @@ int timer(){
 
         fflush(stdout);
 
-        // Pause for one second
         clock_t stop = clock() + CLOCKS_PER_SEC;
         while (clock() < stop) { }
 
         total_seconds--;
     }
 } 
-
-
-
 
 int printAsciiNumbers(int digits[], int length) {
   const char *ascii_art[10][6] = {
@@ -74,10 +89,6 @@ int printAsciiNumbers(int digits[], int length) {
 }
 }
 
-void PrintHewooWowld(){
-  printf("Hewwo Wowld\n");
-}
-
 void menu(){
   printf("______________________________________________________________\n");
   printf("|                                                              |\n");
@@ -91,5 +102,5 @@ void menu(){
   printf("Hello! Welcome to our app, what do you want to do cuh\n");
   printf("1. Set a new timer\n");
   printf("2. Check on the C-eedling™\n");
-  printf("3. Quit");
+  printf("3. Quit\n");
 }
