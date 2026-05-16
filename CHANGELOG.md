@@ -1,6 +1,23 @@
 # Changelog of Commits
 Made to document team contributions (who worked on what).
 
+## - Joses 16/05/2026 15:44:00
+### Added
+- Added Default and Customizable Pomodoro Timer Option
+  * Mostly worked on the default Pomodoro Timer
+- Added PrintASCIITree function (no trees)
+- Added while loop (exit) for main function
+### Updated
+- Updated inputTime function
+  * Variables (sessionMinutes,breakMinutes,sessions) updated for default and customizable Pomodoro Timer Option
+- Updated timer function
+  * Designed interface
+  * Added colon ASCII art in between minutes and seconds
+  * Added option to pause/start, skip, and quit Pomodoro Timer
+  * Fixed flickering
+- Updated printASCIINumbers function
+  * Added colon ASCII art
+
 
 ## - Joses 14/05/2026 11:17:00
 ### Added
